@@ -1,6 +1,10 @@
-import json
+import pandas as pd
 
-with open("calgary_traffic_incidents.json", "r") as f:
-    data = json.load(f)
+excel_data = "calgary_traffic_incidents.xlsx"
+df = pd.read_excel(excel_data)
 
-unique_data = list({json.dumps(item): item for item in data}.values())
+df.rename(columns={'incident_info': 'Location', 'description': 'Description', 'start_dt': 'Recorded', 'modified_dt': 'Last Updated', 'quadrant': 'Quadrant', 'longitude': 'Longitude', 'latitude': 'Latitude', 'count': 'Incident Count', 'id': 'Incident ID', 'point': 'Point'}, inplace=True)  # renaming the columns for clarity
+
+df_reduced = df.iloc[:, :-3]   # dropping the last three columns since they're not needed
+df_reduced.to_excel("CalgaryTrafficIncidentsData.xlsx", index=False)
+
