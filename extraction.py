@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 
 
 # getting the data from the Calgary Open Data API
@@ -10,8 +11,8 @@ response = requests.get(url)
 # error handling for the request and adding the data into a JSON file
 if response.status_code == 200:
     data = response.json()
-    with open("calgary_traffic_incidents.json", "w") as f:
-        f.write(response.text)
-    print(data)
+    df = pd.DataFrame(data)
+
+    excel_data = df.to_excel("calgary_traffic_incidents.xlsx", index=False)
 else:
     print(f"Error: {response.status_code}")
