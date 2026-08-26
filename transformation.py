@@ -1,4 +1,5 @@
 import pandas as pd
+import openpyxl
 
 excel_data = "calgary_traffic_incidents.xlsx"
 df = pd.read_excel(excel_data)
@@ -17,3 +18,7 @@ df.drop(columns=columns_to_drop, inplace=True)
 
 df.to_excel(excel_data, index=False)  # saving the transformed data to a new Excel file
 
+# checking for null values
+null_values = df.isnull().sum()
+print("Null values in each column:")
+print(null_values)
