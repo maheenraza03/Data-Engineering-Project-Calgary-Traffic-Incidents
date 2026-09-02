@@ -22,3 +22,14 @@ df.to_excel(excel_data, index=False)  # saving the transformed data to a new Exc
 null_values = df.isnull().sum()
 print("Null values in each column:")
 print(null_values)
+
+# checking to make sure there aren't any duplicate incident IDs
+duplicate_incidents = df[df.duplicated(subset=['Incident ID'], keep=False)]
+print("Duplicate incidents found:")
+print(duplicate_incidents)
+
+# if there are duplicate incident IDs, we can drop them and keep the first occurrence
+if not duplicate_incidents.empty:
+    df.drop_duplicates(subset=['Incident ID'], keep='first', inplace=True)
+    print("Duplicates removed. Updated DataFrame:")
+    print(df)
