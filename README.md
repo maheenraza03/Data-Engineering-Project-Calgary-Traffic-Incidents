@@ -2,6 +2,10 @@
 
 An end-to-end ETL pipeline that extracts Calgary traffic incident data from a public API on the City of Calgary website, transforms and validates the data with Python, loads it into PostgreSQL, and analyzes the data using SQL and Tableau.
 
+<img width="1534" height="236" alt="image" src="https://github.com/user-attachments/assets/7b340938-272c-47ca-9ead-c6695a98d9ad" />
+<img width="330" height="809" alt="image" src="https://github.com/user-attachments/assets/21f46a90-1b0d-4782-9af7-8d77f7058310" />
+
+
 ## Tech Stack
 
 * **Python**
